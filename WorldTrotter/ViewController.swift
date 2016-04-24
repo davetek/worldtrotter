@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //v0.2 b2 - correcting Commit message
+    
    
   
 

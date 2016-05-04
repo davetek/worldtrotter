@@ -63,7 +63,24 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".")
         let replacementTextHasDecimalSeparator = string.rangeOfString(".")
         
+        //new code based on NSCharacterSet Class Reference and
+        // http://stackoverflow.com/questions/24502669/swift-how-to-find-out-if-letter-is-alphanumeric-or-digit
+        let alphaCharSet = NSCharacterSet.letterCharacterSet() //create an NSCharacterSet of Unicode letters
+        
+        var isAlphaChar: Bool = false
+
+        //convert the Swift String entered into an array of Unicode UTF16 characters
+        //  then check if any unicode character in the array is an alphabetic character
+        for codeUnit in string.utf16 {
+            if alphaCharSet.characterIsMember(codeUnit) {
+                isAlphaChar = true
+            }
+        }
+      
         if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
+            return false
+        }
+        else if isAlphaChar {
             return false
         }
         else {

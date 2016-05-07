@@ -9,6 +9,13 @@
 import UIKit
 
 class ConversionViewController: UIViewController, UITextFieldDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print("ConversionViewController loaded its view.")
+    }
+    
     @IBOutlet var celsiusLabel: UILabel!
     var farenheitValue: Double? {
         didSet {

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
     
     var mapView: MKMapView!
     
@@ -28,7 +28,6 @@ class MapViewController: UIViewController {
         view.addSubview(segmentedControl)
         
         let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor)
-        
         let margins = view.layoutMarginsGuide
         let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
         let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
@@ -44,6 +43,30 @@ class MapViewController: UIViewController {
         // the errors for the segmentedControl.addTarget method call then went away
         
         segmentedControl.addTarget(self, action: #selector(MapViewController.mapTypeChanged), forControlEvents: .ValueChanged)
+        
+       
+        //add a button programmatically
+        let userLocationButton = UIButton()
+        userLocationButton.titleLabel?.text = "YourLocation"
+        userLocationButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+
+        userLocationButton.translatesAutoresizingMaskIntoConstraints = true
+
+        view.addSubview(userLocationButton)
+        view.bringSubviewToFront(userLocationButton)
+
+        
+        let bottomConstraint = userLocationButton.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor)
+        let leadingButtonConstraint = userLocationButton.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
+        let trailingButtonConstraint = userLocationButton.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
+        
+        bottomConstraint.active = true
+        leadingButtonConstraint.active = true
+        trailingButtonConstraint.active = true
+        
+
+        
+        
         
     }
     

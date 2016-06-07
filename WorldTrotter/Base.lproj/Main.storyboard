@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Of1-Sf-tgU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Of1-Sf-tgU">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -95,6 +95,7 @@
         <scene sceneID="m3o-HC-Oun">
             <objects>
                 <viewController title="MapViewController" id="JgH-rp-5Wj" customClass="MapViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="ZRk-dJ-JIV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="daI-fp-Wqa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -120,6 +121,23 @@
             </objects>
             <point key="canvasLocation" x="1210" y="1071"/>
         </scene>
+        <!--Test-->
+        <scene sceneID="DtT-rm-DSr">
+            <objects>
+                <viewController title="Test" id="Af2-Ty-glB" sceneMemberID="viewController">
+                    <toolbar key="view" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lhl-c9-6Sj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <items>
+                            <barButtonItem title="Item" id="MxX-tG-7pe"/>
+                        </items>
+                    </toolbar>
+                    <tabBarItem key="tabBarItem" title="Test" id="LCk-FW-OuO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T2T-S7-SC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1982" y="849"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="neb-5f-cI5">
             <objects>
@@ -133,6 +151,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aKn-xH-Fnf"/>
                         <segue destination="JgH-rp-5Wj" kind="relationship" relationship="viewControllers" id="aZw-e0-nC9"/>
                         <segue destination="1xT-ce-mNW" kind="relationship" relationship="viewControllers" id="SRj-XF-HdH"/>
+                        <segue destination="Af2-Ty-glB" kind="relationship" relationship="viewControllers" id="NIu-rs-2Pq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tzv-ka-wp6" userLabel="First Responder" sceneMemberID="firstResponder"/>

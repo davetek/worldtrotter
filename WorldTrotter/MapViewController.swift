@@ -19,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //create a container view
         containerView = UIView()
         
+        
         //set this as the main view of this view controller
         view = containerView
         view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
@@ -26,9 +27,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // create a map view
         mapView = MKMapView()
         
+        
+        //set this
+        mapView.translatesAutoresizingMaskIntoConstraints = false
+        
         //set the map view as a subview of the container view
         view.addSubview(mapView)
-        
         
         let margins = view.layoutMarginsGuide
         
@@ -42,7 +46,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         trailingMapConstraint.active = true
         bottomMapConstraint.active = true
         
-        mapView.translatesAutoresizingMaskIntoConstraints = false
         
         view.bringSubviewToFront(mapView)
 
@@ -90,16 +93,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         leadingButtonConstraint.active = true
         trailingButtonConstraint.active = true
         
-
-        
-        
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("MapViewController loaded its view")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        print("Check This",view.subviews.map {view in return
+            "\(String.fromCString(object_getClassName(view))) \(view.frame) \(view.constraints)"})
     }
     
     //for use in segmented control in override of loadView()

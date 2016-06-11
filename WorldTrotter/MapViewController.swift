@@ -35,10 +35,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let topMapConstraint = mapView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor)
         let leadingMapConstraint = mapView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
         let trailingMapConstraint = mapView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
+        let bottomMapConstraint = mapView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor)
         
         topMapConstraint.active = true
         leadingMapConstraint.active = true
         trailingMapConstraint.active = true
+        bottomMapConstraint.active = true
+        
+        mapView.translatesAutoresizingMaskIntoConstraints = false
         
         view.bringSubviewToFront(mapView)
 

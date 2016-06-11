@@ -11,14 +11,37 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
+    var containerView: UIView!
     var mapView: MKMapView!
     
     override func loadView() {
+        
+        //create a container view
+        containerView = UIView()
+        
+        //set this as the main view of this view controller
+        view = containerView
+        view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+        
         // create a map view
         mapView = MKMapView()
         
-        //set it as the main view of this view controller
-        view = mapView
+        //set the map view as a subview of the container view
+        view.addSubview(mapView)
+        
+        
+        let margins = view.layoutMarginsGuide
+        
+        let topMapConstraint = mapView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor)
+        let leadingMapConstraint = mapView.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
+        let trailingMapConstraint = mapView.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
+        
+        topMapConstraint.active = true
+        leadingMapConstraint.active = true
+        trailingMapConstraint.active = true
+        
+        view.bringSubviewToFront(mapView)
+
         
         let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
@@ -28,7 +51,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         view.addSubview(segmentedControl)
         
         let topConstraint = segmentedControl.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor)
-        let margins = view.layoutMarginsGuide
         let leadingConstraint = segmentedControl.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
         let trailingConstraint = segmentedControl.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
         

@@ -75,11 +75,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
        
         //add a button programmatically
-        let userLocationButton = UIButton()
-        userLocationButton.titleLabel?.text = "YourLocation"
-        userLocationButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+        let userLocationButton = UIButton(type: .Custom)
+        userLocationButton.setTitle("Your Location", forState: .Normal)
+        //userLocationButton.titleLabel!.text = "YourLocation"
+        //userLocationButton.titleLabel!.hidden = false
 
-        userLocationButton.translatesAutoresizingMaskIntoConstraints = true
+        userLocationButton.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.5)
+        print(userLocationButton.titleLabel)
+
+
+        userLocationButton.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(userLocationButton)
         view.bringSubviewToFront(userLocationButton)

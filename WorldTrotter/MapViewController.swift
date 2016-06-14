@@ -13,6 +13,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var containerView: UIView!
     var mapView: MKMapView!
+    var mapRegion: MKCoordinateRegion!
+
     
     override func loadView() {
         
@@ -73,14 +75,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         segmentedControl.addTarget(self, action: #selector(MapViewController.mapTypeChanged), forControlEvents: .ValueChanged)
         
+        
+        
        
         //add a button programmatically
         let userLocationButton = UIButton(type: .Custom)
         userLocationButton.setTitle("Your Location", forState: .Normal)
+        
+        //set title color
+        userLocationButton.setTitleColor(UIColor.grayColor().colorWithAlphaComponent(0.65), forState: .Normal)
         //userLocationButton.titleLabel!.text = "YourLocation"
         //userLocationButton.titleLabel!.hidden = false
 
-        userLocationButton.backgroundColor = UIColor.redColor().colorWithAlphaComponent(0.5)
+        userLocationButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         print(userLocationButton.titleLabel)
 
 
@@ -98,19 +105,38 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         leadingButtonConstraint.active = true
         trailingButtonConstraint.active = true
         
+        //userLocationButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
+        userLocationButton.addTarget(self, action: #selector(MapViewController.zoomIn(_:)), forControlEvents: .TouchUpInside)
     }
+    
+    //test for button action
+    func writeToConsole() {
+        print("button clicked")
+    }
+    
+    
+    //from http://www.techotopia.com/index.php/Working_with_Maps_on_iOS_8_with_Swift,_MapKit_and_the_MKMapView_Class
+    func zoomIn(sender: AnyObject) {
+        let userLocation = mapView.userLocation
+        let region = MKCoordinateRegionMakeWithDistance((userLocation.location?.coordinate)!, 2000, 2000)
+        mapView.setRegion(region, animated: true)
+    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("MapViewController loaded its view")
+        
+        mapView.showsUserLocation = true
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        print("Check This",view.subviews.map {view in return
-            "\(String.fromCString(object_getClassName(view))) \(view.frame) \(view.constraints)"})
+        //print("Check This",view.subviews.map {view in return
+        //    "\(String.fromCString(object_getClassName(view))) \(view.frame) \(view.constraints)"})
     }
     
     //for use in segmented control in override of loadView()
@@ -122,5 +148,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         default: break
         }
     }
+    
+    
 
 }

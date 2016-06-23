@@ -121,23 +121,6 @@
             </objects>
             <point key="canvasLocation" x="1210" y="1071"/>
         </scene>
-        <!--Test-->
-        <scene sceneID="DtT-rm-DSr">
-            <objects>
-                <viewController title="Test" id="Af2-Ty-glB" sceneMemberID="viewController">
-                    <toolbar key="view" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lhl-c9-6Sj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <items>
-                            <barButtonItem title="Item" id="MxX-tG-7pe"/>
-                        </items>
-                    </toolbar>
-                    <tabBarItem key="tabBarItem" title="Test" id="LCk-FW-OuO"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T2T-S7-SC0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1982" y="849"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="neb-5f-cI5">
             <objects>
@@ -151,7 +134,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="aKn-xH-Fnf"/>
                         <segue destination="JgH-rp-5Wj" kind="relationship" relationship="viewControllers" id="aZw-e0-nC9"/>
                         <segue destination="1xT-ce-mNW" kind="relationship" relationship="viewControllers" id="SRj-XF-HdH"/>
-                        <segue destination="Af2-Ty-glB" kind="relationship" relationship="viewControllers" id="NIu-rs-2Pq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tzv-ka-wp6" userLabel="First Responder" sceneMemberID="firstResponder"/>

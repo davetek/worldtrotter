@@ -8,12 +8,15 @@
 
 import UIKit
 import MapKit
+import AddressBook
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     var containerView: UIView!
     var mapView: MKMapView!
     var mapRegion: MKCoordinateRegion!
+    
+    
 
     
     override func loadView() {
@@ -122,14 +125,74 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
     
-
+    //from the top-rated answer in http://stackoverflow.com/questions/25631410/swift-different-images-for-annotation
+    // override the MKMapView delegate method viewForAnnotation to set each annotation image programmatically
+    //TO DO//
+    
+    
+    //from
+    let userIdentifier = "UserLocation"
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("MapViewController loaded its view")
         
+        //this is the command that determines if user location appears
         mapView.showsUserLocation = true
+        
+        
+        //add pin annotation 01
+        let annotation01 = MKPointAnnotation()
+        
+        let locationBirthplace = CLLocationCoordinate2D(
+            latitude: 34.495965,
+            longitude: -93.051348
+        )
+        
+        annotation01.coordinate = locationBirthplace
+        annotation01.title = "Dave's Birthplace"
+        annotation01.subtitle = "Hot Springs, Arkansas"
+        
+        mapView.addAnnotation(annotation01)
+        
+        
+//        //add pin annotation 02 for the user's location
+//        let annotation02 = MKPointAnnotation()
+//        
+//        //pull latitude and longtitude from user location (my idea)
+//        let userLocationLatitude = mapView.userLocation.coordinate.latitude
+//        let userLocationLongtitude = mapView.userLocation.coordinate.longitude
+//        //use these to create a user location
+//        let userLocation = CLLocationCoordinate2D(
+//            latitude: userLocationLatitude,
+//            longitude: userLocationLongtitude
+//        )
+//        
+//        //create an annotation object for the user's location
+//        annotation02.coordinate = userLocation
+//        annotation02.title = "You are here"
+//        
+//        mapView.addAnnotation(annotation02)
+        
+        
+        //add pin annotation
+        let annotation03 = MKPointAnnotation()
+        
+        let locationHiking = CLLocationCoordinate2D(
+            latitude: 34.740905,
+            longitude: -83.936812
+        )
+        
+        annotation03.coordinate = locationHiking
+        annotation03.title = "Blood Mountain"
+        annotation03.subtitle = "Blue Ridge Mtns - Georgia"
+        
+        mapView.addAnnotation(annotation03)
+
     }
     
     override func viewDidLayoutSubviews() {

@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // obtained from http://www.techotopia.com/index.php/Working_with_Maps_on_iOS_8_with_Swift,_MapKit_and_the_MKMapView_Class
         locationManager = CLLocationManager()
         locationManager!.requestWhenInUseAuthorization()
-
         
         return true
     }

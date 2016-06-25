@@ -81,28 +81,25 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         
        
-        //add a button programmatically
+        //add a button programmatically for zooming to the user's location
         let userLocationButton = UIButton(type: .Custom)
         userLocationButton.setTitle("Your Location", forState: .Normal)
         
-        //set title color
-        userLocationButton.setTitleColor(UIColor.grayColor().colorWithAlphaComponent(0.65), forState: .Normal)
-        //userLocationButton.titleLabel!.text = "YourLocation"
-        //userLocationButton.titleLabel!.hidden = false
-
+        //set title color, background color, and border width, radius, and color
+        userLocationButton.setTitleColor(UIColor.grayColor().colorWithAlphaComponent(0.75), forState: .Normal)
         userLocationButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
-        print(userLocationButton.titleLabel)
-
+        userLocationButton.layer.borderWidth = 0.5
+        userLocationButton.layer.cornerRadius = 5
+        userLocationButton.layer.borderColor = UIColor.blueColor().CGColor
 
         userLocationButton.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(userLocationButton)
         view.bringSubviewToFront(userLocationButton)
 
-        
         let bottomConstraint = userLocationButton.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor)
         let leadingButtonConstraint = userLocationButton.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
-        let trailingButtonConstraint = userLocationButton.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
+        let trailingButtonConstraint = userLocationButton.trailingAnchor.constraintEqualToAnchor(margins.centerXAnchor)
         
         bottomConstraint.active = true
         leadingButtonConstraint.active = true
@@ -110,6 +107,35 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         //userLocationButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
         userLocationButton.addTarget(self, action: #selector(MapViewController.zoomIn(_:)), forControlEvents: .TouchUpInside)
+        
+        
+        
+        
+        //add another button programatically for zooming to each pin annotation on the map
+        let goToPinButton = UIButton(type: .Custom)
+        goToPinButton.setTitle("Go to Pin", forState: .Normal)
+        
+        goToPinButton.setTitleColor(UIColor.grayColor().colorWithAlphaComponent(0.75), forState: .Normal)
+        goToPinButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+        goToPinButton.layer.borderWidth = 0.5
+        goToPinButton.layer.cornerRadius = 5
+        goToPinButton.layer.borderColor = UIColor.blueColor().CGColor
+        
+        goToPinButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(goToPinButton)
+        
+        let bottomConstraintGoToButton = goToPinButton.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor)
+        let leadingButtonConstraintGoToButton = goToPinButton.leadingAnchor.constraintEqualToAnchor(margins.centerXAnchor)
+        let trailingButtonConstraintGoToButton = goToPinButton.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
+        
+        bottomConstraintGoToButton.active = true
+        leadingButtonConstraintGoToButton.active = true
+        trailingButtonConstraintGoToButton.active = true
+        
+        goToPinButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
+
+        
     }
     
     //test for button action
@@ -160,26 +186,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(annotation01)
         
         
-//        //add pin annotation 02 for the user's location
-//        let annotation02 = MKPointAnnotation()
-//        
-//        //pull latitude and longtitude from user location (my idea)
-//        let userLocationLatitude = mapView.userLocation.coordinate.latitude
-//        let userLocationLongtitude = mapView.userLocation.coordinate.longitude
-//        //use these to create a user location
-//        let userLocation = CLLocationCoordinate2D(
-//            latitude: userLocationLatitude,
-//            longitude: userLocationLongtitude
-//        )
-//        
-//        //create an annotation object for the user's location
-//        annotation02.coordinate = userLocation
-//        annotation02.title = "You are here"
-//        
-//        mapView.addAnnotation(annotation02)
+
         
         
-        //add pin annotation
+        //add pin annotation 03
         let annotation03 = MKPointAnnotation()
         
         let locationHiking = CLLocationCoordinate2D(

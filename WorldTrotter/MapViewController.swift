@@ -15,9 +15,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var containerView: UIView!
     var mapView: MKMapView!
     var mapRegion: MKCoordinateRegion!
+    var annotationCoordinates: [CLLocationCoordinate2D]!
+    var indexOfLastAnnotation: Int!
     
-    
-
     
     override func loadView() {
         
@@ -29,8 +29,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         view = containerView
         view.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
         
-        // create a map view
+        // define a map view
         mapView = MKMapView()
+        
+        //set map view as MKMapViewDelegate
+        mapView.delegate = self
         
         
         //set this
@@ -133,9 +136,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         leadingButtonConstraintGoToButton.active = true
         trailingButtonConstraintGoToButton.active = true
         
-        goToPinButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
+        //goToPinButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
+        goToPinButton.addTarget(self, action: #selector(MapViewController.goToAnnotation), forControlEvents: .TouchUpInside)
 
-        
     }
     
     //test for button action
@@ -151,19 +154,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
     
+    func goToAnnotation() {
+        let pinRegion = MKCoordinateRegionMakeWithDistance(annotationCoordinates[indexOfLastAnnotation], 4000, 4000)
+        mapView.setRegion(pinRegion, animated: true)
+        indexOfLastAnnotation = indexOfLastAnnotation + 1
+    }
+    
     //from the top-rated answer in http://stackoverflow.com/questions/25631410/swift-different-images-for-annotation
     // override the MKMapView delegate method viewForAnnotation to set each annotation image programmatically
     //TO DO//
-    
-    
-    //from
-    let userIdentifier = "UserLocation"
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        indexOfLastAnnotation = 0 //restart counter
         
         print("MapViewController loaded its view")
         
@@ -182,11 +189,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         annotation01.coordinate = locationBirthplace
         annotation01.title = "Dave's Birthplace"
         annotation01.subtitle = "Hot Springs, Arkansas"
-        
+    
         mapView.addAnnotation(annotation01)
+        annotationCoordinates.append(locationBirthplace)
         
-        
-
         
         
         //add pin annotation 03
@@ -202,15 +208,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         annotation03.subtitle = "Blue Ridge Mtns - Georgia"
         
         mapView.addAnnotation(annotation03)
+        annotationCoordinates.append(locationHiking)
 
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        //print("Check This",view.subviews.map {view in return
-        //    "\(String.fromCString(object_getClassName(view))) \(view.frame) \(view.constraints)"})
+    //implement the MKMapViewDelegate method called when an annotation is added
+    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
+        print("annotation was added: ", views[0].annotation?.title, ", coordinates ", views[0].annotation?.coordinate)
     }
+    
+
     
     //for use in segmented control in override of loadView()
     func mapTypeChanged(segControl: UISegmentedControl) {

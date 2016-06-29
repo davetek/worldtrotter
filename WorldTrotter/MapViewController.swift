@@ -15,7 +15,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var containerView: UIView!
     var mapView: MKMapView!
     var mapRegion: MKCoordinateRegion!
-    var annotationCoordinates: [CLLocationCoordinate2D]!
+    var annotationCoordinates = [CLLocationCoordinate2D]()
     var indexOfLastAnnotation: Int!
     
     
@@ -136,7 +136,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         leadingButtonConstraintGoToButton.active = true
         trailingButtonConstraintGoToButton.active = true
         
-        //goToPinButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
+        goToPinButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
         goToPinButton.addTarget(self, action: #selector(MapViewController.goToAnnotation), forControlEvents: .TouchUpInside)
 
     }

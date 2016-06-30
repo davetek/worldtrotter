@@ -16,7 +16,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var mapView: MKMapView!
     var mapRegion: MKCoordinateRegion!
     var annotationCoordinates = [CLLocationCoordinate2D]()
-    var indexOfLastAnnotation: Int!
+    var annotationCoordinatesIndex: Int!
     
     
     override func loadView() {
@@ -136,7 +136,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         leadingButtonConstraintGoToButton.active = true
         trailingButtonConstraintGoToButton.active = true
         
-        goToPinButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
+        //goToPinButton.addTarget(self, action: #selector(MapViewController.writeToConsole), forControlEvents: .TouchUpInside)
         goToPinButton.addTarget(self, action: #selector(MapViewController.goToAnnotation), forControlEvents: .TouchUpInside)
 
     }
@@ -155,9 +155,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func goToAnnotation() {
-        let pinRegion = MKCoordinateRegionMakeWithDistance(annotationCoordinates[indexOfLastAnnotation], 4000, 4000)
+        let pinRegion = MKCoordinateRegionMakeWithDistance(annotationCoordinates[annotationCoordinatesIndex], 8000, 8000)
         mapView.setRegion(pinRegion, animated: true)
-        indexOfLastAnnotation = indexOfLastAnnotation + 1
+        //can use array index generator to automatically provide index that is within array bounds
+        
+        //increment annotation coordinates array index for the next time the function is called
+        if (annotationCoordinatesIndex < annotationCoordinates.count - 1) {
+            annotationCoordinatesIndex = annotationCoordinatesIndex + 1
+        }
+        else {
+            annotationCoordinatesIndex = 0
+        }
+        
     }
     
     //from the top-rated answer in http://stackoverflow.com/questions/25631410/swift-different-images-for-annotation
@@ -170,7 +179,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        indexOfLastAnnotation = 0 //restart counter
+        annotationCoordinatesIndex = 0 //restart counter
         
         print("MapViewController loaded its view")
         
@@ -193,6 +202,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(annotation01)
         annotationCoordinates.append(locationBirthplace)
         
+        
+        //add pin annotation 02
+        let annotation02 = MKPointAnnotation()
+        
+        let locationScotland = CLLocationCoordinate2D(
+            latitude: 56.253786,
+            longitude: -4.581686
+        )
+        
+        annotation02.coordinate = locationScotland
+        annotation02.title = "Loch Lomond & The Trossachs Nat'l Park"
+        annotation02.subtitle = "Scotland"
+        
+        mapView.addAnnotation(annotation02)
+        annotationCoordinates.append(locationScotland)
+        
+
         
         
         //add pin annotation 03

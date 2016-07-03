@@ -111,8 +111,8 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var textField: UITextField!
     
     @IBAction func farenheitFieldEditingChanged(textField: UITextField) {
-        if let text = textField.text, value = Double(text) {
-            farenheitValue = value
+        if let text = textField.text, number = numberFormatter.numberFromString(text) {
+            farenheitValue = number.doubleValue
         }
         else {
             farenheitValue = nil
@@ -135,8 +135,20 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     func textField(textField: UITextField,
                    shouldChangeCharactersInRange range: NSRange,
                                                  replacementString string: String) -> Bool {
-        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".")
-        let replacementTextHasDecimalSeparator = string.rangeOfString(".")
+        
+        let currentLocale = NSLocale.currentLocale()
+        let decimalSeparator = currentLocale.objectForKey(NSLocaleDecimalSeparator) as! String
+        
+        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(decimalSeparator)
+        let replacementTextHasDecimalSeparator = string.rangeOfString(decimalSeparator)
+        
+        if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
+            return false
+        }
+        else {
+            return true
+        }
+        
         
         //new code based on NSCharacterSet Class Reference and
         // http://stackoverflow.com/questions/24502669/swift-how-to-find-out-if-letter-is-alphanumeric-or-digit

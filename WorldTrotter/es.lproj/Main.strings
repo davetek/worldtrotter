@@ -1,0 +1,33 @@
+
+/* Class = "UIViewController"; title = "WebViewController"; ObjectID = "1xT-ce-mNW"; */
+"1xT-ce-mNW.title" = "WebViewController";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "6f8-o7-5Vc"; */
+"6f8-o7-5Vc.text" = "100";
+
+/* Class = "UITextField"; placeholder = "value"; ObjectID = "78L-B5-HdB"; */
+"78L-B5-HdB.placeholder" = "valor";
+
+/* Class = "UILabel"; text = "degrees Celsius"; ObjectID = "Al0-4O-eNG"; */
+"Al0-4O-eNG.text" = "grados Celsius";
+
+/* Class = "UIViewController"; title = "ConversionViewController"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "ConversionViewController";
+
+/* Class = "UITabBarItem"; title = "Web"; ObjectID = "H7w-VW-FMZ"; */
+"H7w-VW-FMZ.title" = "Web";
+
+/* Class = "UIViewController"; title = "MapViewController"; ObjectID = "JgH-rp-5Wj"; */
+"JgH-rp-5Wj.title" = "MapViewController";
+
+/* Class = "UILabel"; text = "degrees Farenheit"; ObjectID = "N96-tX-iQK"; */
+"N96-tX-iQK.text" = "grados Farenheit";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "ZRk-dJ-JIV"; */
+"ZRk-dJ-JIV.title" = "Mapa";
+
+/* Class = "UILabel"; text = "is really"; ObjectID = "u4b-s2-wSV"; */
+"u4b-s2-wSV.text" = "es realmente";
+
+/* Class = "UITabBarItem"; title = "Convert"; ObjectID = "uGn-A7-OSA"; */
+"uGn-A7-OSA.title" = "Convertir";

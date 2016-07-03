@@ -57,8 +57,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         view.bringSubviewToFront(mapView)
 
+        let standardString = NSLocalizedString("Standard", comment: "Standard map view")
+        let satelliteString = NSLocalizedString("Satellite", comment: "Satellite map view")
+        let hybridString = NSLocalizedString("Hybrid", comment: "Hybrid map view")
+        let segmentedControl = UISegmentedControl(items: [standardString, hybridString, satelliteString])
         
-        let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
+        //let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
         
@@ -144,6 +148,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //test for button action
     func writeToConsole() {
         print("button clicked")
+    }
+    
+    
+    //for use in segmented control in override of loadView()
+    func mapTypeChanged(segControl: UISegmentedControl) {
+        switch segControl.selectedSegmentIndex {
+        case 0: mapView.mapType = .Standard
+        case 1: mapView.mapType = .Hybrid
+        case 2: mapView.mapType = .Satellite
+        default: break
+        }
     }
     
     
@@ -245,15 +260,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
 
     
-    //for use in segmented control in override of loadView()
-    func mapTypeChanged(segControl: UISegmentedControl) {
-        switch segControl.selectedSegmentIndex {
-        case 0: mapView.mapType = .Standard
-        case 1: mapView.mapType = .Hybrid
-        case 2: mapView.mapType = .Satellite
-        default: break
-        }
-    }
+   
     
     
 

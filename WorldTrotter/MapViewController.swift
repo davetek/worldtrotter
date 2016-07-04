@@ -216,8 +216,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         )
         
         annotation01.coordinate = locationBirthplace
-        annotation01.title = "Dave's Birthplace"
-        annotation01.subtitle = "Hot Springs, Arkansas"
+        let daveBirthplaceAnnotationTitleString = NSLocalizedString("Dave's Birthplace", comment: "Annotation title for Dave's Birthplace")
+        annotation01.title = daveBirthplaceAnnotationTitleString
+        
+        let daveBirthplaceAnnotationSubtitleString = NSLocalizedString("Hot Springs, Arkansas", comment: "Annotation subtitle for Dave's Birthplace")
+        annotation01.subtitle = daveBirthplaceAnnotationSubtitleString
     
         mapView.addAnnotation(annotation01)
         annotationCoordinates.append(locationBirthplace)
@@ -232,8 +235,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         )
         
         annotation02.coordinate = locationScotland
-        annotation02.title = "Loch Lomond & The Trossachs Nat'l Park"
-        annotation02.subtitle = "Scotland"
+        let locationScotlandAnnotationTitleString = NSLocalizedString("Loch Lomond & The Trossachs Nat'l Park", comment: "Annotation title for Scotland location")
+        annotation02.title = locationScotlandAnnotationTitleString
+        
+        let locationScotlandAnnotationSubtitleString = NSLocalizedString("Scotland", comment: "Annotation subtitle for Scotland location")
+        annotation02.subtitle = locationScotlandAnnotationSubtitleString
         
         mapView.addAnnotation(annotation02)
         annotationCoordinates.append(locationScotland)
@@ -250,8 +256,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         )
         
         annotation03.coordinate = locationHiking
-        annotation03.title = "Blood Mountain"
-        annotation03.subtitle = "Blue Ridge Mtns - Georgia"
+        let locationHikingAnnotationTitleString = NSLocalizedString("Blood Mountain", comment: "Annotation title for hiking location")
+        annotation03.title = locationHikingAnnotationTitleString
+        
+        let locationHikingAnnotationSubtitleString = NSLocalizedString("Appalachian Trail - Georgia", comment: "Annotation subtitle for hiking locaation")
+        annotation03.subtitle = locationHikingAnnotationSubtitleString
         
         mapView.addAnnotation(annotation03)
         annotationCoordinates.append(locationHiking)

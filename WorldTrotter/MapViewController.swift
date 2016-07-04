@@ -62,7 +62,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let hybridString = NSLocalizedString("Hybrid", comment: "Hybrid map view")
         let segmentedControl = UISegmentedControl(items: [standardString, hybridString, satelliteString])
         
-        //let segmentedControl = UISegmentedControl(items: ["Standard", "Hybrid", "Satellite"])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
         
@@ -90,7 +89,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
        
         //add a button programmatically for zooming to the user's location
         let userLocationButton = UIButton(type: .Custom)
-        userLocationButton.setTitle("Your Location", forState: .Normal)
+        
+        //set up the button title for localization
+        let userLocationButtonTitleString = NSLocalizedString("Your Location", comment: "Title for Your Location button")
+        userLocationButton.setTitle(userLocationButtonTitleString, forState: .Normal)
         
         //set title color, background color, and border width, radius, and color
         userLocationButton.setTitleColor(UIColor.grayColor().colorWithAlphaComponent(0.75), forState: .Normal)
@@ -104,7 +106,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         view.addSubview(userLocationButton)
         view.bringSubviewToFront(userLocationButton)
 
-        let bottomConstraint = userLocationButton.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor)
+        //let bottomConstraint = userLocationButton.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor)
+        let bottomConstraint = userLocationButton.bottomAnchor.constraintLessThanOrEqualToAnchor(bottomLayoutGuide.topAnchor, constant: -10.0)
         let leadingButtonConstraint = userLocationButton.leadingAnchor.constraintEqualToAnchor(margins.leadingAnchor)
         let trailingButtonConstraint = userLocationButton.trailingAnchor.constraintEqualToAnchor(margins.centerXAnchor)
         
@@ -120,7 +123,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         //add another button programatically for zooming to each pin annotation on the map
         let goToPinButton = UIButton(type: .Custom)
-        goToPinButton.setTitle("Go to Pin", forState: .Normal)
+        let goToPinButtonTitleString = NSLocalizedString("Go to Pin", comment: "Title for Go to Pin button")
+        goToPinButton.setTitle(goToPinButtonTitleString, forState: .Normal)
         
         goToPinButton.setTitleColor(UIColor.grayColor().colorWithAlphaComponent(0.75), forState: .Normal)
         goToPinButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
@@ -132,7 +136,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         view.addSubview(goToPinButton)
         
-        let bottomConstraintGoToButton = goToPinButton.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor)
+        //let bottomConstraintGoToButton = goToPinButton.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor)
+        let bottomConstraintGoToButton = goToPinButton.bottomAnchor.constraintLessThanOrEqualToAnchor(bottomLayoutGuide.topAnchor, constant: -10.0)
         let leadingButtonConstraintGoToButton = goToPinButton.leadingAnchor.constraintEqualToAnchor(margins.centerXAnchor)
         let trailingButtonConstraintGoToButton = goToPinButton.trailingAnchor.constraintEqualToAnchor(margins.trailingAnchor)
         

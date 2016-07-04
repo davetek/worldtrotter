@@ -28,6 +28,8 @@
 		211545D01CCB975600F00681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		212257BA1CD190DE00AE5218 /* ConversionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversionViewController.swift; sourceTree = "<group>"; };
 		212257BC1CDAE3C800AE5218 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		212D7FCC1D29E05900AF31C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		212D7FCD1D29E05900AF31C7 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		212F6CC21CE89E1B00C7C42B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		212F6CC41CE8A7DE00C7C42B /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		213C808E1D28AA6200C31D16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				en,
 				Base,
 				es,
+				de,
 			);
 			mainGroup = 211545B81CCB975600F00681;
 			productRefGroup = 211545C21CCB975600F00681 /* Products */;
@@ -175,6 +178,7 @@
 				211545C91CCB975600F00681 /* Base */,
 				2190D1B61D2811B80093472C /* en */,
 				2190D1B71D28121C0093472C /* es */,
+				212D7FCC1D29E05900AF31C7 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -193,6 +197,7 @@
 				213C808E1D28AA6200C31D16 /* Base */,
 				213C80901D28AA6E00C31D16 /* en */,
 				213C80911D28AA7000C31D16 /* es */,
+				212D7FCD1D29E05900AF31C7 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
